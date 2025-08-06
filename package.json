@@ -1,0 +1,33 @@
+{
+  "name": "virtual-delivery-assistant",
+  "version": "1.0.0",
+  "scripts": {
+    "seed": "ts-node src/seedData.ts",
+    "start": "ts-node src/assistant.ts",
+    "train": "ts-node src/trainModel.ts",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "ts-node src/server.ts",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-frontend": "cd frontend && npm install"
+  },
+  "dependencies": {
+    "@types/twilio": "^3.19.2",
+    "@xenova/transformers": "^2.17.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "mongodb": "^5.7.0",
+    "openai": "^5.8.2",
+    "twilio": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.5.1",
+    "concurrently": "^8.2.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}

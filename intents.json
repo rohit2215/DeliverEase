@@ -1,0 +1,5 @@
+{
+    "status_check": ["status", "tracking", "where is my package"],
+    "delay_query": ["delay", "why late", "when will it arrive"],
+    "cancel_request": ["cancel", "stop delivery", "return package"]
+}
