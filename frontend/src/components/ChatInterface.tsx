@@ -231,7 +231,7 @@ const ChatInterface: React.FC = () => {
     return () => {
       if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
     };
-  }, [messages, inputValue, otpValue, sessionEnded, resetInactivityTimer]);
+  }, [messages, inputValue, otpValue, sessionEnded]);
 
   /**
    * Send message to backend with enhanced error handling
