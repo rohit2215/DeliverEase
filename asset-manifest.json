@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DeliverEase/static/css/main.ed251adf.css",
+    "main.js": "/DeliverEase/static/js/main.4af359dc.js",
+    "static/js/453.670e15c7.chunk.js": "/DeliverEase/static/js/453.670e15c7.chunk.js",
+    "index.html": "/DeliverEase/index.html",
+    "main.ed251adf.css.map": "/DeliverEase/static/css/main.ed251adf.css.map",
+    "main.4af359dc.js.map": "/DeliverEase/static/js/main.4af359dc.js.map",
+    "453.670e15c7.chunk.js.map": "/DeliverEase/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed251adf.css",
+    "static/js/main.4af359dc.js"
+  ]
+}
