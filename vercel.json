@@ -10,7 +10,5 @@
       "src": "/api/(.*)",
       "dest": "/api/index.ts"
     }
-  ],
-  "buildCommand": "echo 'No build needed for API-only deployment'",
-  "outputDirectory": null
+  ]
 } 
