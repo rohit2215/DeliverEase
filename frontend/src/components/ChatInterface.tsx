@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Bot, Clock, MessageSquare, Mic, MicOff, Package, Phone, RefreshCw, Send, User } from 'lucide-react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ChatInterface.css';
 
 // Constants
@@ -206,25 +206,7 @@ const ChatInterface: React.FC = () => {
     }
   };
 
-  /**
-   * Helper to clear and restart inactivity timer
-   */
-  const resetInactivityTimer = useCallback(() => {
-    if (inactivityTimerRef.current) {
-      clearTimeout(inactivityTimerRef.current);
-    }
-    if (!sessionEnded) {
-      inactivityTimerRef.current = setTimeout(() => {
-        setSessionEnded(true);
-        setMessages(prev => [...prev, {
-          id: (Date.now() + 2).toString(),
-          text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
-          sender: 'assistant',
-          timestamp: new Date()
-        }]);
-      }, INACTIVITY_TIMEOUT);
-    }
-  }, [sessionEnded, setSessionEnded, setMessages]);
+
 
   // Simple inactivity timer - removed complex logic to avoid ESLint issues
   useEffect(() => {
