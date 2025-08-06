@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Bot, Clock, MessageSquare, Mic, MicOff, Package, Phone, RefreshCw, Send, User } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './ChatInterface.css';
 
 // TypeScript declarations for Web Speech API
@@ -208,7 +208,7 @@ const ChatInterface: React.FC = () => {
   /**
    * Helper to clear and restart inactivity timer
    */
-  const resetInactivityTimer = () => {
+  const resetInactivityTimer = useCallback(() => {
     if (inactivityTimerRef.current) {
       clearTimeout(inactivityTimerRef.current);
     }
@@ -223,7 +223,7 @@ const ChatInterface: React.FC = () => {
         }]);
       }, INACTIVITY_TIMEOUT);
     }
-  };
+  }, [sessionEnded, setSessionEnded, setMessages]);
 
   // Reset timer on mount and on every message/input change
   useEffect(() => {
