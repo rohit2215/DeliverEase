@@ -8,8 +8,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "ts-node src/server.ts",
     "client": "cd frontend && npm start",
-    "build": "cd frontend && npm run build",
-    "install-frontend": "cd frontend && npm install"
+    "build": "cd frontend && npm install && npm run build",
+    "install-frontend": "cd frontend && npm install",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@types/twilio": "^3.19.2",
