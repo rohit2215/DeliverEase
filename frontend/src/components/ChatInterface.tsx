@@ -330,7 +330,6 @@ const ChatInterface: React.FC = () => {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
-      resetInactivityTimer(); // Reset timer after successful message
     }
   };
 
@@ -340,7 +339,6 @@ const ChatInterface: React.FC = () => {
    */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    resetInactivityTimer(); // Reset timer on form submission
     if (otpMode) {
       sendMessage(otpValue, true);
     } else {
@@ -528,7 +526,7 @@ const ChatInterface: React.FC = () => {
             <input
               type="text"
               value={otpValue}
-              onChange={e => { setOtpValue(e.target.value.replace(/[^0-9]/g, '').slice(0, 6)); resetInactivityTimer(); }}
+              onChange={e => { setOtpValue(e.target.value.replace(/[^0-9]/g, '').slice(0, 6)); }}
               placeholder="Enter 6-digit OTP"
               disabled={isLoading || !sessionId || sessionEnded}
               className="message-input"
@@ -541,7 +539,7 @@ const ChatInterface: React.FC = () => {
               ref={inputRef}
               type="text"
               value={inputValue}
-              onChange={(e) => { setInputValue(e.target.value); resetInactivityTimer(); }}
+              onChange={(e) => { setInputValue(e.target.value); }}
               placeholder="Type your message here..."
               disabled={isLoading || !sessionId || sessionEnded}
               className="message-input"
