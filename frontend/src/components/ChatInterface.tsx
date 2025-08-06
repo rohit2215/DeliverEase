@@ -3,6 +3,9 @@ import { Bot, Clock, MessageSquare, Mic, MicOff, Package, Phone, RefreshCw, Send
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './ChatInterface.css';
 
+// Constants
+const INACTIVITY_TIMEOUT = 2 * 60 * 1000; // 2 minutes
+
 // TypeScript declarations for Web Speech API
 interface SpeechRecognition extends EventTarget {
   continuous: boolean;
@@ -116,8 +119,6 @@ const ChatInterface: React.FC = () => {
 
   // Inactivity timer state
   const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const INACTIVITY_TIMEOUT = 2 * 60 * 1000; // 2 minutes
 
   // Initialize speech recognition on component mount
   useEffect(() => {
