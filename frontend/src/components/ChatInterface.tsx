@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Bot, Clock, MessageSquare, Mic, MicOff, Package, Phone, RefreshCw, Send, User } from 'lucide-react';
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './ChatInterface.css';
 
 // Constants
@@ -174,7 +174,7 @@ const ChatInterface: React.FC = () => {
     }]);
 
     // Call backend to reset session and orders for fresh start
-    fetch(`http://localhost:3001/api/reset-session/${newSessionId}`, {
+    fetch(`https://deliver-ease-odg3-git-main-rohit-srivastavas-projects.vercel.app/api/reset-session/${newSessionId}`, {
       method: 'POST',
     }).catch(error => {
       console.error('Error initializing session:', error);
@@ -260,7 +260,7 @@ const ChatInterface: React.FC = () => {
 
     try {
       // Send message to backend API
-      const response = await fetch('http://localhost:3001/api/chat', {
+      const response = await fetch('https://deliver-ease-odg3-git-main-rohit-srivastavas-projects.vercel.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -368,9 +368,9 @@ const ChatInterface: React.FC = () => {
       setSessionId(newSessionId);
       
       // Reset session on backend
-      await fetch(`http://localhost:3001/api/reset-session/${newSessionId}`, {
-        method: 'POST',
-      });
+          await fetch(`https://deliver-ease-odg3-git-main-rohit-srivastavas-projects.vercel.app/api/reset-session/${newSessionId}`, {
+      method: 'POST',
+    });
       
       // Reset chat state with welcome message
       setMessages([{
