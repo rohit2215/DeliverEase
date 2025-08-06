@@ -226,30 +226,89 @@ const ChatInterface: React.FC = () => {
     }
   }, [sessionEnded, setSessionEnded, setMessages]);
 
-  // Reset timer on mount and on every message/input change
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Reset timer when messages change
   useEffect(() => {
-    const resetInactivityTimer = () => {
-      if (inactivityTimerRef.current) {
-        clearTimeout(inactivityTimerRef.current);
-      }
-      if (!sessionEnded) {
-        inactivityTimerRef.current = setTimeout(() => {
-          setSessionEnded(true);
-          setMessages(prev => [...prev, {
-            id: (Date.now() + 2).toString(),
-            text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
-            sender: 'assistant',
-            timestamp: new Date()
-          }]);
-        }, INACTIVITY_TIMEOUT);
-      }
-    };
-    resetInactivityTimer();
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+    if (!sessionEnded) {
+      inactivityTimerRef.current = setTimeout(() => {
+        setSessionEnded(true);
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 2).toString(),
+          text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
+          sender: 'assistant',
+          timestamp: new Date()
+        }]);
+      }, INACTIVITY_TIMEOUT);
+    }
     return () => {
       if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
     };
-  }, [messages, inputValue, otpValue, sessionEnded]);
+  }, [messages]);
+
+  // Reset timer when input value changes
+  useEffect(() => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+    if (!sessionEnded) {
+      inactivityTimerRef.current = setTimeout(() => {
+        setSessionEnded(true);
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 2).toString(),
+          text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
+          sender: 'assistant',
+          timestamp: new Date()
+        }]);
+      }, INACTIVITY_TIMEOUT);
+    }
+    return () => {
+      if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+    };
+  }, [inputValue]);
+
+  // Reset timer when OTP value changes
+  useEffect(() => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+    if (!sessionEnded) {
+      inactivityTimerRef.current = setTimeout(() => {
+        setSessionEnded(true);
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 2).toString(),
+          text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
+          sender: 'assistant',
+          timestamp: new Date()
+        }]);
+      }, INACTIVITY_TIMEOUT);
+    }
+    return () => {
+      if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+    };
+  }, [otpValue]);
+
+  // Reset timer when session ended changes
+  useEffect(() => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+    if (!sessionEnded) {
+      inactivityTimerRef.current = setTimeout(() => {
+        setSessionEnded(true);
+        setMessages(prev => [...prev, {
+          id: (Date.now() + 2).toString(),
+          text: 'Your session has expired due to inactivity. Please start a new conversation to continue.',
+          sender: 'assistant',
+          timestamp: new Date()
+        }]);
+      }, INACTIVITY_TIMEOUT);
+    }
+    return () => {
+      if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
+    };
+  }, [sessionEnded]);
 
   /**
    * Send message to backend with enhanced error handling
